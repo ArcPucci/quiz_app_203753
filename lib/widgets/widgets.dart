@@ -4,4 +4,7 @@ export 'custom_app_bar.dart';
 export 'backgrounds/backgrounds.dart';
 export 'custom_rect_bg.dart';
 export 'dialogs/dialogs.dart';
+export 'cards/cards.dart';
+export 'bordered_text.dart';
+export 'labeled_counter.dart';
 export 'custom_switch_1.dart';

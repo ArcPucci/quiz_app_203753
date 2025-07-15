@@ -4,8 +4,17 @@ import 'package:get/get.dart';
 import 'package:quiz_app_203753/widgets/widgets.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, this.child});
+  const CustomAppBar({
+    super.key,
+    this.child,
+    this.hasPause = false,
+    this.onOpen,
+    this.onClose,
+  });
 
+  final bool hasPause;
+  final VoidCallback? onOpen;
+  final VoidCallback? onClose;
   final Widget? child;
 
   @override
@@ -26,7 +35,7 @@ class CustomAppBar extends StatelessWidget {
             ),
           ),
           if (child != null) child!,
-          SettingsButton(),
+          SettingsButton(hasPause: hasPause, onOpen: onOpen, onClose: onClose),
         ],
       ),
     );

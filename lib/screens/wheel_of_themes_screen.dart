@@ -8,10 +8,21 @@ import 'package:quiz_app_203753/utils/utils.dart';
 import '../controllers/controllers.dart';
 import '../widgets/widgets.dart';
 
-class WheelOfThemesScreen extends StatelessWidget {
+class WheelOfThemesScreen extends StatefulWidget {
   WheelOfThemesScreen({super.key});
 
+  @override
+  State<WheelOfThemesScreen> createState() => _WheelOfThemesScreenState();
+}
+
+class _WheelOfThemesScreenState extends State<WheelOfThemesScreen> {
   final controller = Get.put(WheelController());
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -2,18 +2,18 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:quiz_app_203753/utils/utils.dart';
 import 'package:quiz_app_203753/widgets/widgets.dart';
 
 import '../controllers/controllers.dart';
 
 class MenuScreen extends StatelessWidget {
-  MenuScreen({super.key});
-
-  final controller = NavigationController();
+  const MenuScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<ConfigurationsController>();
     return CustomBackground1(
       child: Stack(
         children: [

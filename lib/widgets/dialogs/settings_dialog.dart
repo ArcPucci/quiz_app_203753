@@ -2,14 +2,20 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:quiz_app_203753/utils/utils.dart';
 import 'package:quiz_app_203753/widgets/widgets.dart';
 
+import '../../controllers/controllers.dart';
+
 class SettingsDialog extends StatelessWidget {
-  const SettingsDialog({super.key});
+  const SettingsDialog({super.key, this.hasPause = false});
+
+  final bool hasPause;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<ConfigurationsController>();
     return Material(
       type: MaterialType.transparency,
       child: BackdropFilter(
@@ -17,7 +23,15 @@ class SettingsDialog extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              SizedBox(height: 187.h),
+              SizedBox(height: 187.h - (hasPause ? 75.r : 0)),
+              if (hasPause)
+                Padding(
+                  padding: EdgeInsets.only(bottom: 32.h),
+                  child: SizedBox(
+                    height: 48.r,
+                    child: Text("Pause", style: AppTextStyles.lo48),
+                  ),
+                ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -51,18 +65,20 @@ class SettingsDialog extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        width: 70.r,
-                        height: 84.r,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Music", style: AppTextStyles.ts37),
-                            CustomSwitch1(
-                              initialValue: true,
-                              onChanged: (value) {},
-                            ),
-                          ],
+                      Obx(
+                        () => SizedBox(
+                          width: 70.r,
+                          height: 84.r,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Music", style: AppTextStyles.ts37),
+                              CustomSwitch1(
+                                initialValue: controller.audio.value,
+                                onChanged: controller.toggleMusic,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       SizedBox(width: 40.w),
@@ -74,8 +90,8 @@ class SettingsDialog extends StatelessWidget {
                           children: [
                             Text("sound", style: AppTextStyles.ts37),
                             CustomSwitch1(
-                              initialValue: true,
-                              onChanged: (value) {},
+                              initialValue: controller.sound.value,
+                              onChanged: controller.toggleSound,
                             ),
                           ],
                         ),

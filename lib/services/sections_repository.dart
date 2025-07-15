@@ -68,7 +68,7 @@ class SectionsRepository {
           Question(
             question:
                 "A safety is worth 2 points and is scored when an offensive player with the ball is tackled in their own end zone.",
-            isTrue: true,
+            isTrue: false,
           ),
           Question(
             question:
@@ -179,7 +179,7 @@ class SectionsRepository {
           ),
           Question(
             question:
-                "A yellow card is issued for rule violations; two yellow cards in one match result in a red card and ejection.",
+                "A yellow cards is issued for rule violations; two yellow cards in one match result in a red cards and ejection.",
             isTrue: false,
           ),
           Question(
@@ -296,8 +296,8 @@ class SectionsRepository {
           ),
           Question(
             question:
-                "A standard American football field is 100 yards long, with two 10-yard end zones at each end, making the total length 120 yards.",
-            isTrue: false,
+                "Basketball was invented in 1891 by James Naismith as an indoor sport to keep athletes active during winter. The first game was played with a soccer ball and two peach baskets as goals.",
+            isTrue: true,
           ),
           Question(
             question:

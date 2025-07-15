@@ -4,7 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dialogs/dialogs.dart';
 
 class SettingsButton extends StatelessWidget {
-  const SettingsButton({super.key});
+  const SettingsButton({
+    super.key,
+    this.hasPause = false,
+    this.onOpen,
+    this.onClose,
+  });
+
+  final bool hasPause;
+  final VoidCallback? onOpen;
+  final VoidCallback? onClose;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +28,13 @@ class SettingsButton extends StatelessWidget {
     );
   }
 
-  void showSettings(BuildContext context) {
-    showDialog(
+  void showSettings(BuildContext context) async {
+    onOpen?.call();
+    await showDialog(
       context: context,
       barrierColor: Colors.black.withValues(alpha: 0.25),
-      builder: (context) => SettingsDialog(),
+      builder: (context) => SettingsDialog(hasPause: hasPause),
     );
+    onClose?.call();
   }
 }

@@ -13,7 +13,7 @@ class ThemeScreen extends StatelessWidget {
   ThemeScreen({super.key});
 
   final controller = Get.find<WheelController>();
-  final navController = Get.find<NavigationController>();
+  final navController = Get.find<ConfigurationsController>();
 
   @override
   Widget build(BuildContext context) {

@@ -23,6 +23,8 @@ class WheelController extends GetxController {
   final RxBool isSpinning = false.obs;
   final RxInt selectedIndex = (-1).obs;
 
+  bool _disposed = false;
+
   int get selectedIndexValue => switch (items[selectedIndex.value]) {
     'us' => 0,
     'foot' => 1,
@@ -46,6 +48,7 @@ class WheelController extends GetxController {
     final double startAngle = rotationAngle.value % 360;
 
     void animate() {
+      if(_disposed) return;
       final double elapsed =
           (DateTime.now().difference(startTime)).inMilliseconds /
           spinDuration.inMilliseconds;
@@ -61,6 +64,7 @@ class WheelController extends GetxController {
         selectedIndex.value = winningIndex;
 
         print(items[winningIndex]);
+        if (_disposed) return;
         Get.to(() => ThemeScreen());
       }
     }
@@ -69,7 +73,13 @@ class WheelController extends GetxController {
   }
 
   void goToQuiz() {
-    final controller = Get.find<NavigationController>();
-    controller.goToQuiz(selectedIndex.value);
+    final controller = Get.find<ConfigurationsController>();
+    controller.goToQuiz(selectedIndexValue);
+  }
+
+  @override
+  void dispose() {
+    _disposed = true;
+    super.dispose();
   }
 }

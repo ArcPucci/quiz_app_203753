@@ -16,7 +16,7 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  final navController = Get.find<NavigationController>();
+  final navController = Get.find<ConfigurationsController>();
   final controller = PageController();
 
   int _index = 0;
@@ -285,21 +285,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             right: 0,
             bottom: 240.h,
             child: SafeArea(
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/png/question.png',
-                    width: 43.r,
-                    height: 77.r,
-                    fit: BoxFit.fill,
-                  ),
-                  Image.asset(
-                    'assets/png/man1.png',
-                    width: 372.r,
-                    height: 265.r,
-                    fit: BoxFit.fill,
-                  ),
-                ],
+              child: SizedBox(
+                width: 372.w,
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/png/question.png',
+                      width: 43.r,
+                      height: 77.r,
+                      fit: BoxFit.fill,
+                    ),
+                    Image.asset(
+                      'assets/png/man1.png',
+                      width: 372.r,
+                      height: 265.r,
+                      fit: BoxFit.fill,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
